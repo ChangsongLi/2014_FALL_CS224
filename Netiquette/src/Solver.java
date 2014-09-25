@@ -24,23 +24,19 @@ public class Solver {
 			String str = scan.next();
 			int i1 = checkTwoUpLe(str);
 			if(i1 == -1){
-				System.out.println(1);
-				return -1;
+                return -1;
 			}
 			int i2 = checkDiLe( str );
 			if(i2 == -1){
-				System.out.println(2);
 				return -1;
 			}
 			
 			int i3 = checkIsoLe( str );
 			if( i3 == -1 ){
-				System.out.println(3);
 				return -1;
 			}
 			int i4 = checkTwoPunMark( str );
 			if( i4 == -1 ){
-				System.out.println(4);
 				return -1;
 			}
 		
@@ -62,12 +58,12 @@ public class Solver {
 	
 	public int checkDiLe( String s ){
 		for( int i = 0; i < s.length() - 1; i++ ){
-			if( (s.charAt(i) <= '0' && s.charAt(i) >= '9' )
+			if( (s.charAt(i) <= '9' && s.charAt(i) >= '0' )
 					&& ((s.charAt(i+1) <= 'Z' && s.charAt(i+1) >= 'A')
 					|| (s.charAt(i+1) <= 'z' && s.charAt(i+1) >= 'a'))){
 				return -1;
 			}
-			if( (s.charAt(i+1) <= '0' && s.charAt(i+1) >= '9' )
+			if( (s.charAt(i+1) <= '9' && s.charAt(i+1) >= '0' )
 					&& ((s.charAt(i) <= 'Z' && s.charAt(i) >= 'A')
 					|| (s.charAt(i) <= 'z' && s.charAt(i) >= 'a'))){
 				return -1;
@@ -98,7 +94,6 @@ public class Solver {
 						!(s.charAt(i+1) <= 'Z' && s.charAt(i+1) >= 'A') &&
 						!(s.charAt(i+1) <= 'z' && s.charAt(i+1) >= 'a')))){
 				if(!(s.charAt(i) == '"') && !(s.charAt(i+1) == '"')){
-					System.out.println(s.charAt(i)+" "+s.charAt(i+1) );
 					return -1;
 				}
 			}
