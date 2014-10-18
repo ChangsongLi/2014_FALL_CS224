@@ -1,6 +1,8 @@
 /**
  * input the size height and wide of circuit board. To get possible ways
  * to connect two diagonal corners.
+ *
+ * Changsong Li
  */
 import java.math.BigInteger;
 import java.util.Scanner;
@@ -8,11 +10,11 @@ import java.util.Scanner;
 
 public class CircuitBuilder {
 	
-	private long[][] data;
+	private BigInteger[][] data;
 	
 	private void solve(){
 		Scanner scan = new Scanner(System.in);
-		data = new long[51][51];
+		data = new BigInteger[51][51];
 		
 		while( scan.hasNext() ){
 			int h = scan.nextInt();
@@ -32,8 +34,15 @@ public class CircuitBuilder {
 			return new BigInteger("1");
 		else if( h == 2 && w == 2)
 			return new BigInteger("2");
-				
+			
+		if(data[h][w] != null){
+			return data[h][w];
+		}
+		
 		BigInteger result= findOutput( h - 1, w).add(findOutput(h, w-1));		
+		data[w][h] = result;
+		data[h][w] = result;
+		
 		return result;
 	}
 
